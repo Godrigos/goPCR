@@ -12,7 +12,7 @@ import (
 
 func save(b bool) {
 	if b {
-		fileName := fmt.Sprintf("./saved/PCRCalc_%s.txt",
+		fileName := fmt.Sprintf(execDir+"/saved/PCRCalc_%s.txt",
 			time.Now().Format("Jan-2-2006-15.04.05"))
 
 		f, err := os.Create(fileName)

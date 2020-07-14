@@ -1,6 +1,9 @@
 package main
 
 import (
+	"os"
+	"path"
+
 	"fyne.io/fyne"
 	"fyne.io/fyne/app"
 	"fyne.io/fyne/widget"
@@ -8,6 +11,8 @@ import (
 
 var warnPosition = fyne.NewPos(10, 200)
 var err error
+var myDir, _ = os.Executable()
+var execDir = path.Dir(myDir)
 
 var application = app.NewWithID("com.godrigos.pcrcalc")
 var w = application.NewWindow("PCRCalc")
