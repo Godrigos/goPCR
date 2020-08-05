@@ -4,18 +4,16 @@ import (
 	"os"
 	"path"
 
-	"fyne.io/fyne"
 	"fyne.io/fyne/app"
 	"fyne.io/fyne/widget"
 )
 
-var warnPosition = fyne.NewPos(10, 200)
 var err error
 var myDir, _ = os.Executable()
 var execDir = path.Dir(myDir)
 
-var application = app.NewWithID("com.godrigos.pcrcalc")
-var w = application.NewWindow("PCRCalc")
+var application = app.NewWithID("com.github.godrigos.gopcr")
+var w = application.NewWindow("goPCR")
 
 // Define widget for labels and values for stock tab
 var bufferLab = widget.NewLabel("Buffer:")

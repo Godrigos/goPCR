@@ -8,7 +8,8 @@ import (
 func stock() Solutions {
 	var defaultValues Solutions
 
-	file, err := ioutil.ReadFile(execDir + "/presets/stock.json")
+	//file, err := ioutil.ReadFile(execDir + "/presets/stock.json")
+	file, err := ioutil.ReadFile("./presets/stock.json")
 	if err != nil {
 		panic(err)
 	}
@@ -24,7 +25,8 @@ func stock() Solutions {
 func pcr() Solutions {
 	var pcrDefaultValues Solutions
 
-	file, err := ioutil.ReadFile(execDir + "/presets/pcr.json")
+	//file, err := ioutil.ReadFile(execDir + "/presets/pcr.json")
+	file, err := ioutil.ReadFile("./presets/pcr.json")
 	if err != nil {
 		panic(err)
 	}
@@ -40,7 +42,8 @@ func pcr() Solutions {
 func mix() Mix {
 	var mixDefaultValues Mix
 
-	file, err := ioutil.ReadFile(execDir + "/presets/mix.json")
+	//file, err := ioutil.ReadFile(execDir + "/presets/mix.json")
+	file, err := ioutil.ReadFile("./presets/mix.json")
 	if err != nil {
 		panic(err)
 	}

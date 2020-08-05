@@ -16,7 +16,8 @@ func main() {
 	w.SetFixedSize(true)
 
 	// Load icon
-	icon, err := fyne.LoadResourceFromPath(execDir + "/images/icon.png")
+	//icon, err := fyne.LoadResourceFromPath(execDir + "/images/icon.png")
+	icon, err := fyne.LoadResourceFromPath("./images/icon.png")
 	if err != nil {
 		panic(err)
 	}
