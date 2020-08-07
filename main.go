@@ -8,49 +8,16 @@ import (
 
 func main() {
 
-	// Import stock, pcr and mix values from json files in presets folder
-	stock := stock()
-	pcr := pcr()
-	mix := mix()
+	// Set stock, pcr and mix values from application preferences
+	prefs()
 
 	w.SetFixedSize(true)
 
 	// Load icon
-	//icon, err := fyne.LoadResourceFromPath(execDir + "/images/icon.png")
-	icon, err := fyne.LoadResourceFromPath("./images/icon.png")
+	icon, err := fyne.LoadResourceFromPath("Icon.png")
 	if err != nil {
 		panic(err)
 	}
-
-	// Set defaul values for stock solutions
-	bufferVal.SetText(stock.Buffer)
-	dntpsVal.SetText(stock.DNTPs)
-	mgcl2Val.SetText(stock.MgCl2)
-	primer1Val.SetText(stock.Primer1)
-	primer2Val.SetText(stock.Primer2)
-	primer3Val.SetText(stock.Primer3)
-	primer4Val.SetText(stock.Primer4)
-	glycerolVal.SetText(stock.Gly)
-	dmsoVal.SetText(stock.DMSO)
-	taqVal.SetText(stock.Taq)
-	dnacVal.SetText(stock.DnaC)
-
-	// Set defaul values for PCR
-	bufferValMix.SetText(pcr.Buffer)
-	dntpsValMix.SetText(pcr.DNTPs)
-	mgcl2ValMix.SetText(pcr.MgCl2)
-	primer1ValMix.SetText(pcr.Primer1)
-	primer2ValMix.SetText(pcr.Primer2)
-	primer3ValMix.SetText(pcr.Primer3)
-	primer4ValMix.SetText(pcr.Primer4)
-	glycerolValMix.SetText(pcr.Gly)
-	dmsoValMix.SetText(pcr.DMSO)
-	taqValMix.SetText(pcr.Taq)
-	dnacValMix.SetText(pcr.DnaC)
-
-	// Set defaul values for Mix
-	reactionVolVal.SetText(mix.Volume)
-	reactionNumVal.SetText(mix.Reactions)
 
 	stockTab := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
 		bufferLab, bufferValScrl, bufferUnit,

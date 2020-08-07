@@ -156,24 +156,3 @@ var p2p3p4, gly, dmso, str string
 
 // Define action button
 var calc = widget.NewButton("Calculate", calculate)
-
-// Solutions stores the default values of stock solutions
-type Solutions struct {
-	Buffer  string `json:"buffer"`
-	DMSO    string `json:"dmso"`
-	DnaC    string `json:"dna_c"`
-	DNTPs   string `json:"dntps"`
-	Gly     string `json:"gly"`
-	MgCl2   string `json:"mgcl2"`
-	Primer1 string `json:"primer1"`
-	Primer2 string `json:"primer2"`
-	Primer3 string `json:"primer3"`
-	Primer4 string `json:"primer4"`
-	Taq     string `json:"taq"`
-}
-
-// Mix stores the default values of mix tabS
-type Mix struct {
-	Volume    string `json:"volume"`
-	Reactions string `json:"reactions"`
-}

@@ -1,4 +1,4 @@
-module PCRCalc
+module goPCR
 
 go 1.14
 
