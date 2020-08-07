@@ -13,12 +13,6 @@ func main() {
 
 	w.SetFixedSize(true)
 
-	// Load icon
-	icon, err := fyne.LoadResourceFromPath("Icon.png")
-	if err != nil {
-		panic(err)
-	}
-
 	stockTab := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
 		bufferLab, bufferValScrl, bufferUnit,
 		dntpsLab, dntpsValScrl, dntpsUnit,
@@ -57,7 +51,6 @@ func main() {
 	// Create tab widget
 	var tabs = widget.NewTabContainer(stockGroup, mixGroup, finalGroup)
 
-	w.SetIcon(icon)
 	w.SetContent(tabs)
 	w.ShowAndRun()
 }
