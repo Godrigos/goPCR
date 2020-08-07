@@ -51,6 +51,7 @@ func main() {
 	// Create tab widget
 	var tabs = widget.NewTabContainer(stockGroup, mixGroup, finalGroup)
 
+	w.SetIcon(icon)
 	w.SetContent(tabs)
 	w.ShowAndRun()
 }
