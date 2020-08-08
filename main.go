@@ -49,7 +49,7 @@ func main() {
 	finalGroup := widget.NewTabItem("Mix", finalTab)
 
 	// Create tab widget
-	var tabs = widget.NewTabContainer(stockGroup, mixGroup, finalGroup)
+	var tabs = widget.NewTabContainer(mixGroup, finalGroup, stockGroup)
 
 	w.SetIcon(icon)
 	w.SetContent(tabs)
