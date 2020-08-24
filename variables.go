@@ -8,151 +8,153 @@ import (
 	"fyne.io/fyne/widget"
 )
 
-var err error
-var myDir, _ = os.Executable()
-var execDir = path.Dir(myDir)
+var (
+	err      error
+	myDir, _ = os.Executable()
+	execDir  = path.Dir(myDir)
 
-var application = app.NewWithID("com.github.godrigos.gopcr")
-var w = application.NewWindow("goPCR")
+	application = app.NewWithID("com.github.godrigos.gopcr")
+	w           = application.NewWindow("goPCR")
 
-// Define widget for labels and values for stock tab
-var bufferLab = widget.NewLabel("Buffer:")
-var bufferVal = widget.NewEntry()
-var bufferValScrl = widget.NewHScrollContainer(bufferVal)
-var bufferUnit = widget.NewLabel("x")
+	// Define widget for labels and values for stock tab
+	bufferLab     = widget.NewLabel("Buffer:")
+	bufferVal     = widget.NewEntry()
+	bufferValScrl = widget.NewHScrollContainer(bufferVal)
+	bufferUnit    = widget.NewLabel("x")
 
-var dntpsLab = widget.NewLabel("DNTPs:")
-var dntpsVal = widget.NewEntry()
-var dntpsValScrl = widget.NewHScrollContainer(dntpsVal)
-var dntpsUnit = widget.NewLabel("nmol/\u00B5L")
+	dntpsLab     = widget.NewLabel("DNTPs:")
+	dntpsVal     = widget.NewEntry()
+	dntpsValScrl = widget.NewHScrollContainer(dntpsVal)
+	dntpsUnit    = widget.NewLabel("nmol/\u00B5L")
 
-var mgcl2Lab = widget.NewLabel("MgCl\u2082:")
-var mgcl2Val = widget.NewEntry()
-var mgcl2ValScrl = widget.NewHScrollContainer(mgcl2Val)
-var mgcl2Unit = widget.NewLabel("nmol/\u00B5L")
+	mgcl2Lab     = widget.NewLabel("MgCl\u2082:")
+	mgcl2Val     = widget.NewEntry()
+	mgcl2ValScrl = widget.NewHScrollContainer(mgcl2Val)
+	mgcl2Unit    = widget.NewLabel("nmol/\u00B5L")
 
-var primer1Lab = widget.NewLabel("Primer 1:")
-var primer1Val = widget.NewEntry()
-var primer1ValScrl = widget.NewHScrollContainer(primer1Val)
-var primer1Unit = widget.NewLabel("pmol/\u00B5L")
+	primer1Lab     = widget.NewLabel("Primer 1:")
+	primer1Val     = widget.NewEntry()
+	primer1ValScrl = widget.NewHScrollContainer(primer1Val)
+	primer1Unit    = widget.NewLabel("pmol/\u00B5L")
 
-var primer2Lab = widget.NewLabel("Primer 2:")
-var primer2Val = widget.NewEntry()
-var primer2ValScrl = widget.NewHScrollContainer(primer2Val)
-var primer2Unit = widget.NewLabel("pmol/\u00B5L")
+	primer2Lab     = widget.NewLabel("Primer 2:")
+	primer2Val     = widget.NewEntry()
+	primer2ValScrl = widget.NewHScrollContainer(primer2Val)
+	primer2Unit    = widget.NewLabel("pmol/\u00B5L")
 
-var primer3Lab = widget.NewLabel("Primer 3:")
-var primer3Val = widget.NewEntry()
-var primer3ValScrl = widget.NewHScrollContainer(primer3Val)
-var primer3Unit = widget.NewLabel("pmol/\u00B5L")
+	primer3Lab     = widget.NewLabel("Primer 3:")
+	primer3Val     = widget.NewEntry()
+	primer3ValScrl = widget.NewHScrollContainer(primer3Val)
+	primer3Unit    = widget.NewLabel("pmol/\u00B5L")
 
-var primer4Lab = widget.NewLabel("Primer 4:")
-var primer4Val = widget.NewEntry()
-var primer4ValScrl = widget.NewHScrollContainer(primer4Val)
-var primer4Unit = widget.NewLabel("pmol/\u00B5L")
+	primer4Lab     = widget.NewLabel("Primer 4:")
+	primer4Val     = widget.NewEntry()
+	primer4ValScrl = widget.NewHScrollContainer(primer4Val)
+	primer4Unit    = widget.NewLabel("pmol/\u00B5L")
 
-var glycerolLab = widget.NewLabel("Glycerol:")
-var glycerolVal = widget.NewEntry()
-var glycerolValScrl = widget.NewHScrollContainer(glycerolVal)
-var glycerolUnit = widget.NewLabel("%")
+	glycerolLab     = widget.NewLabel("Glycerol:")
+	glycerolVal     = widget.NewEntry()
+	glycerolValScrl = widget.NewHScrollContainer(glycerolVal)
+	glycerolUnit    = widget.NewLabel("%")
 
-var dmsoLab = widget.NewLabel("DMSO:")
-var dmsoVal = widget.NewEntry()
-var dmsoValScrl = widget.NewHScrollContainer(dmsoVal)
-var dmsoUnit = widget.NewLabel("%")
+	dmsoLab     = widget.NewLabel("DMSO:")
+	dmsoVal     = widget.NewEntry()
+	dmsoValScrl = widget.NewHScrollContainer(dmsoVal)
+	dmsoUnit    = widget.NewLabel("%")
 
-var taqLab = widget.NewLabel("Taq:")
-var taqVal = widget.NewEntry()
-var taqValScrl = widget.NewHScrollContainer(taqVal)
-var taqUnit = widget.NewLabel("U/\u00B5L")
+	taqLab     = widget.NewLabel("Taq:")
+	taqVal     = widget.NewEntry()
+	taqValScrl = widget.NewHScrollContainer(taqVal)
+	taqUnit    = widget.NewLabel("U/\u00B5L")
 
-var dnacLab = widget.NewLabel("DNA:")
-var dnacVal = widget.NewEntry()
-var dnacValScrl = widget.NewHScrollContainer(dnacVal)
-var dnacUnit = widget.NewLabel("ng/\u00B5L")
+	dnacLab     = widget.NewLabel("DNA:")
+	dnacVal     = widget.NewEntry()
+	dnacValScrl = widget.NewHScrollContainer(dnacVal)
+	dnacUnit    = widget.NewLabel("ng/\u00B5L")
 
-// Define widget for labels and values for PCR tab
-var bufferLabMix = widget.NewLabel("Buffer:")
-var bufferValMix = widget.NewEntry()
-var bufferValMixScrl = widget.NewHScrollContainer(bufferValMix)
-var bufferUnitMix = widget.NewLabel("x")
+	// Define widget for labels and values for PCR tab
+	bufferLabMix     = widget.NewLabel("Buffer:")
+	bufferValMix     = widget.NewEntry()
+	bufferValMixScrl = widget.NewHScrollContainer(bufferValMix)
+	bufferUnitMix    = widget.NewLabel("x")
 
-var dntpsLabMix = widget.NewLabel("DNTPs:")
-var dntpsValMix = widget.NewEntry()
-var dntpsValMixScrl = widget.NewHScrollContainer(dntpsValMix)
-var dntpsUnitMix = widget.NewLabel("nmol/\u00B5L")
+	dntpsLabMix     = widget.NewLabel("DNTPs:")
+	dntpsValMix     = widget.NewEntry()
+	dntpsValMixScrl = widget.NewHScrollContainer(dntpsValMix)
+	dntpsUnitMix    = widget.NewLabel("nmol/\u00B5L")
 
-var mgcl2LabMix = widget.NewLabel("MgCl\u2082:")
-var mgcl2ValMix = widget.NewEntry()
-var mgcl2ValMixScrl = widget.NewHScrollContainer(mgcl2ValMix)
-var mgcl2UnitMix = widget.NewLabel("nmol/\u00B5L")
+	mgcl2LabMix     = widget.NewLabel("MgCl\u2082:")
+	mgcl2ValMix     = widget.NewEntry()
+	mgcl2ValMixScrl = widget.NewHScrollContainer(mgcl2ValMix)
+	mgcl2UnitMix    = widget.NewLabel("nmol/\u00B5L")
 
-var primer1LabMix = widget.NewLabel("Primer 1:")
-var primer1ValMix = widget.NewEntry()
-var primer1ValMixScrl = widget.NewHScrollContainer(primer1ValMix)
-var primer1UnitMix = widget.NewLabel("pmol/\u00B5L")
+	primer1LabMix     = widget.NewLabel("Primer 1:")
+	primer1ValMix     = widget.NewEntry()
+	primer1ValMixScrl = widget.NewHScrollContainer(primer1ValMix)
+	primer1UnitMix    = widget.NewLabel("pmol/\u00B5L")
 
-var primer2LabMix = widget.NewLabel("Primer 2:")
-var primer2ValMix = widget.NewEntry()
-var primer2ValMixScrl = widget.NewHScrollContainer(primer2ValMix)
-var primer2UnitMix = widget.NewLabel("pmol/\u00B5L")
+	primer2LabMix     = widget.NewLabel("Primer 2:")
+	primer2ValMix     = widget.NewEntry()
+	primer2ValMixScrl = widget.NewHScrollContainer(primer2ValMix)
+	primer2UnitMix    = widget.NewLabel("pmol/\u00B5L")
 
-var primer3LabMix = widget.NewLabel("Primer 3:")
-var primer3ValMix = widget.NewEntry()
-var primer3ValMixScrl = widget.NewHScrollContainer(primer3ValMix)
-var primer3UnitMix = widget.NewLabel("pmol/\u00B5L")
+	primer3LabMix     = widget.NewLabel("Primer 3:")
+	primer3ValMix     = widget.NewEntry()
+	primer3ValMixScrl = widget.NewHScrollContainer(primer3ValMix)
+	primer3UnitMix    = widget.NewLabel("pmol/\u00B5L")
 
-var primer4LabMix = widget.NewLabel("Primer 4:")
-var primer4ValMix = widget.NewEntry()
-var primer4ValMixScrl = widget.NewHScrollContainer(primer4ValMix)
-var primer4UnitMix = widget.NewLabel("pmol/\u00B5L")
+	primer4LabMix     = widget.NewLabel("Primer 4:")
+	primer4ValMix     = widget.NewEntry()
+	primer4ValMixScrl = widget.NewHScrollContainer(primer4ValMix)
+	primer4UnitMix    = widget.NewLabel("pmol/\u00B5L")
 
-var glycerolLabMix = widget.NewLabel("Glycerol:")
-var glycerolValMix = widget.NewEntry()
-var glycerolValMixScrl = widget.NewHScrollContainer(glycerolValMix)
-var glycerolUnitMix = widget.NewLabel("%")
+	glycerolLabMix     = widget.NewLabel("Glycerol:")
+	glycerolValMix     = widget.NewEntry()
+	glycerolValMixScrl = widget.NewHScrollContainer(glycerolValMix)
+	glycerolUnitMix    = widget.NewLabel("%")
 
-var dmsoLabMix = widget.NewLabel("DMSO:")
-var dmsoValMix = widget.NewEntry()
-var dmsoValMixScrl = widget.NewHScrollContainer(dmsoValMix)
-var dmsoUnitMix = widget.NewLabel("%")
+	dmsoLabMix     = widget.NewLabel("DMSO:")
+	dmsoValMix     = widget.NewEntry()
+	dmsoValMixScrl = widget.NewHScrollContainer(dmsoValMix)
+	dmsoUnitMix    = widget.NewLabel("%")
 
-var taqLabMix = widget.NewLabel("Taq:")
-var taqValMix = widget.NewEntry()
-var taqValMixScrl = widget.NewHScrollContainer(taqValMix)
-var taqUnitMix = widget.NewLabel("U/\u00B5L")
+	taqLabMix     = widget.NewLabel("Taq:")
+	taqValMix     = widget.NewEntry()
+	taqValMixScrl = widget.NewHScrollContainer(taqValMix)
+	taqUnitMix    = widget.NewLabel("U/\u00B5L")
 
-var dnacLabMix = widget.NewLabel("DNA:")
-var dnacValMix = widget.NewEntry()
-var dnacValMixScrl = widget.NewHScrollContainer(dnacValMix)
-var dnacUnitMix = widget.NewLabel("ng")
+	dnacLabMix     = widget.NewLabel("DNA:")
+	dnacValMix     = widget.NewEntry()
+	dnacValMixScrl = widget.NewHScrollContainer(dnacValMix)
+	dnacUnitMix    = widget.NewLabel("ng")
 
-// Define widget for labels and values for mix tab
-var reactionVolLab = widget.NewLabel("Volume:")
-var reactionVolVal = widget.NewEntry()
-var reactionVolValScrl = widget.NewHScrollContainer(reactionVolVal)
-var reactionVolUnit = widget.NewLabel("\u00B5L")
+	// Define widget for labels and values for mix tab
+	reactionVolLab     = widget.NewLabel("Volume:")
+	reactionVolVal     = widget.NewEntry()
+	reactionVolValScrl = widget.NewHScrollContainer(reactionVolVal)
+	reactionVolUnit    = widget.NewLabel("\u00B5L")
 
-var reactionNumLab = widget.NewLabel("Reactions:")
-var reactionNumVal = widget.NewEntry()
-var reactionNumValScrl = widget.NewHScrollContainer(reactionNumVal)
-var reactionNumUnit = widget.NewLabel("x")
+	reactionNumLab     = widget.NewLabel("Reactions:")
+	reactionNumVal     = widget.NewEntry()
+	reactionNumValScrl = widget.NewHScrollContainer(reactionNumVal)
+	reactionNumUnit    = widget.NewLabel("x")
 
-// Define results variables
-var reactionVol, reactionNum float64
-var bufferPCR, bufferStock, buffer float64
-var dntpsPCR, dntpsStock, dntps float64
-var mgcl2PCR, mgcl2Stock, mgcl2 float64
-var p1PCR, p1Stock, p1 float64
-var p2PCR, p2Stock, p2 float64
-var p3PCR, p3Stock, p3 float64
-var p4PCR, p4Stock, p4 float64
-var glyPCR, glyStock, glycerol float64
-var dmsoPCR, dmsoStock, dmsoFinal float64
-var taqPCR, taqStock, taq float64
-var dnaPCR, dnaStock, dna float64
-var h2o, mixVolume float64
-var p2p3p4, gly, dmso, str string
+	// Define results variables
+	reactionVol, reactionNum       float64
+	bufferPCR, bufferStock, buffer float64
+	dntpsPCR, dntpsStock, dntps    float64
+	mgcl2PCR, mgcl2Stock, mgcl2    float64
+	p1PCR, p1Stock, p1             float64
+	p2PCR, p2Stock, p2             float64
+	p3PCR, p3Stock, p3             float64
+	p4PCR, p4Stock, p4             float64
+	glyPCR, glyStock, glycerol     float64
+	dmsoPCR, dmsoStock, dmsoFinal  float64
+	taqPCR, taqStock, taq          float64
+	dnaPCR, dnaStock, dna          float64
+	h2o, mixVolume                 float64
+	p2p3p4, gly, dmso, str         string
 
-// Define action button
-var calc = widget.NewButton("Calculate", calculate)
+	// Define action button
+	calc = widget.NewButton("Calculate", calculate)
+)
