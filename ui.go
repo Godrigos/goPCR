@@ -8,6 +8,9 @@ import (
 
 func loadUI() *widget.TabContainer {
 
+	// Define action button
+	calc := widget.NewButton("Calculate", calculate)
+
 	stockTab := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
 		bufferLab, bufferValScrl, bufferUnit,
 		dntpsLab, dntpsValScrl, dntpsUnit,
@@ -44,7 +47,7 @@ func loadUI() *widget.TabContainer {
 	finalGroup := widget.NewTabItem("Mix", finalTab)
 
 	// Create tab widget
-	var tabs = widget.NewTabContainer(mixGroup, finalGroup, stockGroup)
+	tabs := widget.NewTabContainer(mixGroup, finalGroup, stockGroup)
 
 	return tabs
 }

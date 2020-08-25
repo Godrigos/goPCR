@@ -149,7 +149,4 @@ var (
 	dnaPCR, dnaStock, dna          float64
 	h2o, mixVolume                 float64
 	p2p3p4, gly, dmso, str         string
-
-	// Define action button
-	calc = widget.NewButton("Calculate", calculate)
 )

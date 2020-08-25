@@ -23,7 +23,7 @@ func save(b bool) {
 					str+
 					fmt.Sprintf(
 						"\n\nAdd %.3f \u00B5L of stock "+
-							"DNA to each reaction.",
+							"DNA to each reaction.\n",
 						dna),
 			)
 			if err != nil {
