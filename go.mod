@@ -1,5 +1,5 @@
 module goPCR
 
-go 1.14
+go 1.15
 
 require fyne.io/fyne v1.3.3
