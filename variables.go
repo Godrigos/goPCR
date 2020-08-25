@@ -1,17 +1,12 @@
 package main
 
 import (
-	"os"
-	"path"
-
 	"fyne.io/fyne/app"
 	"fyne.io/fyne/widget"
 )
 
 var (
-	err      error
-	myDir, _ = os.Executable()
-	execDir  = path.Dir(myDir)
+	err error
 
 	application = app.NewWithID("com.github.godrigos.gopcr")
 	w           = application.NewWindow("goPCR")
