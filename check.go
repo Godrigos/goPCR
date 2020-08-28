@@ -6,12 +6,12 @@ import (
 	"fyne.io/fyne/widget"
 )
 
-func checkFloat(err error, s string) bool {
+func (p *pcr) checkFloat(err error, s string) bool {
 	if err != nil {
 		str := ("Non numerical value for\n" + s + "!")
 		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 			fyne.TextStyle{})
-		dialog.ShowCustom("Error", "Ok", warning, w)
+		dialog.ShowCustom("Error", "Ok", warning, p.w)
 
 		err = nil
 

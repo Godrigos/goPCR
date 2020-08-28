@@ -10,130 +10,130 @@ import (
 	"fyne.io/fyne/widget"
 )
 
-func calculate() {
+func (p *pcr) calculate() {
 	// Store error evaluation
 	var errors []bool
 
 	// Reactions volume and number convertion to float64 from string
-	reactionVol, err = strconv.ParseFloat(reactionVolVal.Text, 64)
-	errors = append(errors, checkFloat(err, "reaction volume"))
-	reactionNum, err = strconv.ParseFloat(reactionNumVal.Text, 64)
-	errors = append(errors, checkFloat(err, "reaction number"))
+	reactionVol, err := strconv.ParseFloat(p.reactionVolVal.Text, 64)
+	errors = append(errors, p.checkFloat(err, "reaction volume"))
+	p.reactionNum, err = strconv.ParseFloat(p.reactionNumVal.Text, 64)
+	errors = append(errors, p.checkFloat(err, "reaction number"))
 
 	// Other reagents conversions and calculation
 	// Buffer
-	bufferPCR, err = strconv.ParseFloat(bufferValMix.Text, 64)
-	errors = append(errors, checkFloat(err, "PCR buffer"))
-	bufferStock, err = strconv.ParseFloat(bufferVal.Text, 64)
-	errors = append(errors, checkFloat(err, "Stock buffer"))
-	buffer = (bufferPCR * reactionVol / bufferStock) * reactionNum
+	p.bufferPCR, err = strconv.ParseFloat(p.bufferValMix.Text, 64)
+	errors = append(errors, p.checkFloat(err, "PCR buffer"))
+	p.bufferStock, err = strconv.ParseFloat(p.bufferVal.Text, 64)
+	errors = append(errors, p.checkFloat(err, "Stock buffer"))
+	p.buffer = (p.bufferPCR * reactionVol / p.bufferStock) * p.reactionNum
 	// DNTPs
-	dntpsPCR, err = strconv.ParseFloat(dntpsValMix.Text, 64)
-	errors = append(errors, checkFloat(err, "PCR DNTPs"))
-	dntpsStock, err = strconv.ParseFloat(dntpsVal.Text, 64)
-	errors = append(errors, checkFloat(err, "Stock DNTPs"))
-	dntps = (dntpsPCR * reactionVol / dntpsStock) * reactionNum
+	p.dntpsPCR, err = strconv.ParseFloat(p.dntpsValMix.Text, 64)
+	errors = append(errors, p.checkFloat(err, "PCR DNTPs"))
+	p.dntpsStock, err = strconv.ParseFloat(p.dntpsVal.Text, 64)
+	errors = append(errors, p.checkFloat(err, "Stock DNTPs"))
+	p.dntps = (p.dntpsPCR * reactionVol / p.dntpsStock) * p.reactionNum
 	// MgCl2
-	mgcl2PCR, err = strconv.ParseFloat(mgcl2ValMix.Text, 64)
-	errors = append(errors, checkFloat(err, "PCR MgCl₂"))
-	mgcl2Stock, err = strconv.ParseFloat(mgcl2Val.Text, 64)
-	errors = append(errors, checkFloat(err, "Stock MgCl₂"))
-	mgcl2 = (mgcl2PCR * reactionVol / mgcl2Stock) * reactionNum
+	p.mgcl2PCR, err = strconv.ParseFloat(p.mgcl2ValMix.Text, 64)
+	errors = append(errors, p.checkFloat(err, "PCR MgCl₂"))
+	p.mgcl2Stock, err = strconv.ParseFloat(p.mgcl2Val.Text, 64)
+	errors = append(errors, p.checkFloat(err, "Stock MgCl₂"))
+	p.mgcl2 = (p.mgcl2PCR * reactionVol / p.mgcl2Stock) * p.reactionNum
 	//Primers
-	p1PCR, err = strconv.ParseFloat(primer1ValMix.Text, 64)
-	errors = append(errors, checkFloat(err, "PCR primer 1"))
-	p1Stock, err = strconv.ParseFloat(primer1Val.Text, 64)
-	errors = append(errors, checkFloat(err, "Stock primer 1"))
-	p1 = (p1PCR * reactionVol / p1Stock) * reactionNum
-	p2PCR, err = strconv.ParseFloat(primer2ValMix.Text, 64)
-	errors = append(errors, checkFloat(err, "PCR primer 2"))
-	p2Stock, err = strconv.ParseFloat(primer2Val.Text, 64)
-	errors = append(errors, checkFloat(err, "Stock primer 2"))
-	p2 = (p2PCR * reactionVol / p2Stock) * reactionNum
-	p3PCR, err = strconv.ParseFloat(primer3ValMix.Text, 64)
-	errors = append(errors, checkFloat(err, "PCR primer 3"))
-	p3Stock, err = strconv.ParseFloat(primer3Val.Text, 64)
-	errors = append(errors, checkFloat(err, "Stock primer 3"))
-	p3 = (p3PCR * reactionVol / p3Stock) * reactionNum
-	p4PCR, err = strconv.ParseFloat(primer4ValMix.Text, 64)
-	errors = append(errors, checkFloat(err, "PCR primer 4"))
-	p4Stock, err = strconv.ParseFloat(primer4Val.Text, 64)
-	errors = append(errors, checkFloat(err, "Stock primer 4"))
-	p4 = (p4PCR * reactionVol / p4Stock) * reactionNum
+	p.p1PCR, err = strconv.ParseFloat(p.primer1ValMix.Text, 64)
+	errors = append(errors, p.checkFloat(err, "PCR primer 1"))
+	p.p1Stock, err = strconv.ParseFloat(p.primer1Val.Text, 64)
+	errors = append(errors, p.checkFloat(err, "Stock primer 1"))
+	p.p1 = (p.p1PCR * reactionVol / p.p1Stock) * p.reactionNum
+	p.p2PCR, err = strconv.ParseFloat(p.primer2ValMix.Text, 64)
+	errors = append(errors, p.checkFloat(err, "PCR primer 2"))
+	p.p2Stock, err = strconv.ParseFloat(p.primer2Val.Text, 64)
+	errors = append(errors, p.checkFloat(err, "Stock primer 2"))
+	p.p2 = (p.p2PCR * reactionVol / p.p2Stock) * p.reactionNum
+	p.p3PCR, err = strconv.ParseFloat(p.primer3ValMix.Text, 64)
+	errors = append(errors, p.checkFloat(err, "PCR primer 3"))
+	p.p3Stock, err = strconv.ParseFloat(p.primer3Val.Text, 64)
+	errors = append(errors, p.checkFloat(err, "Stock primer 3"))
+	p.p3 = (p.p3PCR * reactionVol / p.p3Stock) * p.reactionNum
+	p.p4PCR, err = strconv.ParseFloat(p.primer4ValMix.Text, 64)
+	errors = append(errors, p.checkFloat(err, "PCR primer 4"))
+	p.p4Stock, err = strconv.ParseFloat(p.primer4Val.Text, 64)
+	errors = append(errors, p.checkFloat(err, "Stock primer 4"))
+	p.p4 = (p.p4PCR * reactionVol / p.p4Stock) * p.reactionNum
 	// Glycerol
-	glyPCR, err = strconv.ParseFloat(glycerolValMix.Text, 64)
-	errors = append(errors, checkFloat(err, "PCR glycerol"))
-	glyStock, err = strconv.ParseFloat(glycerolVal.Text, 64)
-	errors = append(errors, checkFloat(err, "Stock glycerol"))
-	glycerol = (glyPCR * reactionVol / glyStock) * reactionNum
+	p.glyPCR, err = strconv.ParseFloat(p.glycerolValMix.Text, 64)
+	errors = append(errors, p.checkFloat(err, "PCR glycerol"))
+	p.glyStock, err = strconv.ParseFloat(p.glycerolVal.Text, 64)
+	errors = append(errors, p.checkFloat(err, "Stock glycerol"))
+	p.glycerol = (p.glyPCR * reactionVol / p.glyStock) * p.reactionNum
 	// DMSO
-	dmsoPCR, err = strconv.ParseFloat(dmsoValMix.Text, 64)
-	errors = append(errors, checkFloat(err, "PCR DMSO"))
-	dmsoStock, err = strconv.ParseFloat(dmsoVal.Text, 64)
-	errors = append(errors, checkFloat(err, "Stock DMSO"))
-	dmsoFinal = (dmsoPCR * reactionVol / dmsoStock) * reactionNum
+	p.dmsoPCR, err = strconv.ParseFloat(p.dmsoValMix.Text, 64)
+	errors = append(errors, p.checkFloat(err, "PCR DMSO"))
+	p.dmsoStock, err = strconv.ParseFloat(p.dmsoVal.Text, 64)
+	errors = append(errors, p.checkFloat(err, "Stock DMSO"))
+	p.dmsoFinal = (p.dmsoPCR * reactionVol / p.dmsoStock) * p.reactionNum
 	// Taq
-	taqPCR, err = strconv.ParseFloat(taqValMix.Text, 64)
-	errors = append(errors, checkFloat(err, "PCR DMSO"))
-	taqStock, err = strconv.ParseFloat(taqVal.Text, 64)
-	errors = append(errors, checkFloat(err, "Stock DMSO"))
-	taq = (taqPCR * reactionVol / taqStock) * reactionNum
+	p.taqPCR, err = strconv.ParseFloat(p.taqValMix.Text, 64)
+	errors = append(errors, p.checkFloat(err, "PCR DMSO"))
+	p.taqStock, err = strconv.ParseFloat(p.taqVal.Text, 64)
+	errors = append(errors, p.checkFloat(err, "Stock DMSO"))
+	p.taq = (p.taqPCR * reactionVol / p.taqStock) * p.reactionNum
 	//DNA
-	dnaPCR, err = strconv.ParseFloat(dnacValMix.Text, 64)
-	errors = append(errors, checkFloat(err, "PCR DNA mass"))
-	dnaStock, err = strconv.ParseFloat(dnacVal.Text, 64)
-	errors = append(errors, checkFloat(err, "Stock DNA concentration"))
-	dna = (dnaPCR / dnaStock)
+	p.dnaPCR, err = strconv.ParseFloat(p.dnacValMix.Text, 64)
+	errors = append(errors, p.checkFloat(err, "PCR DNA mass"))
+	p.dnaStock, err = strconv.ParseFloat(p.dnacVal.Text, 64)
+	errors = append(errors, p.checkFloat(err, "Stock DNA concentration"))
+	p.dna = (p.dnaPCR / p.dnaStock)
 	// H2O
-	h2o = ((reactionVol * reactionNum) - buffer - dntps - mgcl2 - p1 -
-		p2 - p3 - p4 - taq - (dna * reactionNum) - glycerol - dmsoFinal)
+	p.h2o = ((reactionVol * p.reactionNum) - p.buffer - p.dntps - p.mgcl2 - p.p1 -
+		p.p2 - p.p3 - p.p4 - p.taq - (p.dna * p.reactionNum) - p.glycerol - p.dmsoFinal)
 	// Final mix volume without DNA addition
-	mixVolume = (buffer + dntps + mgcl2 + p1 + p2 + p3 + p4 + taq +
-		glycerol + dmsoFinal + h2o)
+	p.mixVolume = (p.buffer + p.dntps + p.mgcl2 + p.p1 + p.p2 + p.p3 + p.p4 + p.taq +
+		p.glycerol + p.dmsoFinal + p.h2o)
 
 	// Show results if there was no errors
 	if contains(errors, true) {
-	} else if h2o < 0 {
-		str = "Your PCR concentrations\n" +
+	} else if p.h2o < 0 {
+		p.str = "Your PCR concentrations\n" +
 			"have values that are not\n" +
 			"possible to achieve in the mix!"
-		h2oError := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
+		h2oError := widget.NewLabelWithStyle(p.str, fyne.TextAlignCenter,
 			fyne.TextStyle{})
-		dialog.ShowCustom("Error", "Ok", h2oError, w)
+		dialog.ShowCustom("Error", "Ok", h2oError, p.w)
 	} else {
-		if p2 > 0 {
-			p2p3p4 = fmt.Sprintf("Primer 2: %.3f \u00B5L\n", p2)
+		if p.p2 > 0 {
+			p.p2p3p4 = fmt.Sprintf("Primer 2: %.3f \u00B5L\n", p.p2)
 		}
-		if p3 > 0 {
-			p2p3p4 = p2p3p4 + fmt.Sprintf("Primer 3: %.3f \u00B5L\n", p3)
+		if p.p3 > 0 {
+			p.p2p3p4 = p.p2p3p4 + fmt.Sprintf("Primer 3: %.3f \u00B5L\n", p.p3)
 		}
-		if p4 > 0 {
-			p2p3p4 = p2p3p4 + fmt.Sprintf("Primer 4: %.3f \u00B5L\n", p4)
+		if p.p4 > 0 {
+			p.p2p3p4 = p.p2p3p4 + fmt.Sprintf("Primer 4: %.3f \u00B5L\n", p.p4)
 		}
-		if glycerol > 0 {
-			gly = fmt.Sprintf("Glycerol: %.3f \u00B5L\n", glycerol)
+		if p.glycerol > 0 {
+			p.gly = fmt.Sprintf("Glycerol: %.3f \u00B5L\n", p.glycerol)
 		}
-		if dmsoFinal > 0 {
-			dmso = fmt.Sprintf("DMSO: %.3f \u00B5L\n", dmsoFinal)
+		if p.dmsoFinal > 0 {
+			p.dmso = fmt.Sprintf("DMSO: %.3f \u00B5L\n", p.dmsoFinal)
 		}
-		str = fmt.Sprintf("%.f reactions of %.2f \u00B5L need:\n\n",
-			reactionNum, reactionVol) +
-			fmt.Sprintf("Buffer: %.3f \u00B5L\n", buffer) +
-			fmt.Sprintf("DNTPs: %.3f \u00B5L\n", dntps) +
-			fmt.Sprintf("MgCl₂: %.3f \u00B5L\n", mgcl2) +
-			fmt.Sprintf("Primer 1: %.3f \u00B5L\n", p1) +
-			p2p3p4 + gly + dmso +
-			fmt.Sprintf("Taq: %.3f \u00B5L\n", taq) +
-			fmt.Sprintf("H₂O: %.3f \u00B5L\n", h2o) +
-			fmt.Sprintf("Volume: %.3f \u00B5L", mixVolume)
-		results := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
+		p.str = fmt.Sprintf("%.f reactions of %.2f \u00B5L need:\n\n",
+			p.reactionNum, reactionVol) +
+			fmt.Sprintf("Buffer: %.3f \u00B5L\n", p.buffer) +
+			fmt.Sprintf("DNTPs: %.3f \u00B5L\n", p.dntps) +
+			fmt.Sprintf("MgCl₂: %.3f \u00B5L\n", p.mgcl2) +
+			fmt.Sprintf("Primer 1: %.3f \u00B5L\n", p.p1) +
+			p.p2p3p4 + p.gly + p.dmso +
+			fmt.Sprintf("Taq: %.3f \u00B5L\n", p.taq) +
+			fmt.Sprintf("H₂O: %.3f \u00B5L\n", p.h2o) +
+			fmt.Sprintf("Volume: %.3f \u00B5L", p.mixVolume)
+		results := widget.NewLabelWithStyle(p.str, fyne.TextAlignCenter,
 			fyne.TextStyle{})
 		dnaSample := widget.NewLabelWithStyle(
-			fmt.Sprintf("Add %.3f \u00B5L of stock\nDNA to each reaction.", dna),
+			fmt.Sprintf("Add %.3f \u00B5L of stock\nDNA to each reaction.", p.dna),
 			fyne.TextAlignCenter, fyne.TextStyle{})
 		finalDialog := fyne.NewContainerWithLayout(layout.NewBorderLayout(results,
 			dnaSample, nil, nil), results, dnaSample)
 		dialog.ShowCustomConfirm("PCR Mix", "Save", "Cancel", finalDialog,
-			save, w)
+			p.save, p.w)
 	}
 }

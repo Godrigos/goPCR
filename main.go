@@ -1,13 +1,8 @@
 package main
 
 func main() {
-
-	// Set stock, pcr and mix values from application preferences
-	prefs()
-
-	w.SetFixedSize(true)
-
-	w.SetIcon(icon)
-	w.SetContent(loadUI())
-	w.ShowAndRun()
+	c := &pcr{}
+	c.w.SetContent(c.loadUI(c.application))
+	c.prefs()
+	c.w.ShowAndRun()
 }

@@ -11,7 +11,7 @@ import (
 	"fyne.io/fyne/widget"
 )
 
-func save(b bool) {
+func (p *pcr) save(b bool) {
 	if b {
 		save := dialog.NewFileSave(func(
 			write fyne.URIWriteCloser, err error) {
@@ -20,25 +20,25 @@ func save(b bool) {
 			}
 			l, err := io.WriteString(write,
 				time.Now().Format("Jan 2 2006 - 15:04:05")+"\n"+
-					str+
+					p.str+
 					fmt.Sprintf(
 						"\n\nAdd %.3f \u00B5L of stock "+
 							"DNA to each reaction.\n",
-						dna),
+						p.dna),
 			)
 			if err != nil {
 				str := "Could not write to file!"
 				fileError := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 					fyne.TextStyle{})
-				dialog.ShowCustom("Error", "Ok", fileError, w)
+				dialog.ShowCustom("Error", "Ok", fileError, p.w)
 			} else {
 				str := fmt.Sprintf("File saved successfully!\n"+
 					"(%.d bytes)", l)
 				done := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 					fyne.TextStyle{})
-				dialog.ShowCustom("Done", "Ok", done, w)
+				dialog.ShowCustom("Done", "Ok", done, p.w)
 			}
-		}, w)
+		}, p.w)
 		save.SetFilter(storage.NewExtensionFileFilter([]string{".txt"}))
 		save.Show()
 	}
