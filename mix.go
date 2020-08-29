@@ -14,7 +14,7 @@ func (p *pcr) calculate() {
 	// Store error evaluation
 	var errors []bool
 
-	// Reactions volume and number convertion to float64 from string
+	// Reactions volume and number conversion to float64 from string
 	reactionVol, err := strconv.ParseFloat(p.reactionVolVal.Text, 64)
 	errors = append(errors, p.checkFloat(err, "reaction volume"))
 	p.reactionNum, err = strconv.ParseFloat(p.reactionNumVal.Text, 64)

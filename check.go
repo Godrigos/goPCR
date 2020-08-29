@@ -13,8 +13,6 @@ func (p *pcr) checkFloat(err error, s string) bool {
 			fyne.TextStyle{})
 		dialog.ShowCustom("Error", "Ok", warning, p.w)
 
-		err = nil
-
 		return true
 	}
 	return false
