@@ -103,18 +103,28 @@ func (p *pcr) calculate() {
 	} else {
 		if p.p2 > 0 {
 			p.p2p3p4 = fmt.Sprintf("Primer 2: %.3f \u00B5L\n", p.p2)
+		} else {
+			p.p2p3p4 = ""
 		}
 		if p.p3 > 0 {
 			p.p2p3p4 = p.p2p3p4 + fmt.Sprintf("Primer 3: %.3f \u00B5L\n", p.p3)
+		} else {
+			p.p2p3p4 = p.p2p3p4 + ""
 		}
 		if p.p4 > 0 {
 			p.p2p3p4 = p.p2p3p4 + fmt.Sprintf("Primer 4: %.3f \u00B5L\n", p.p4)
+		} else {
+			p.p2p3p4 = p.p2p3p4 + ""
 		}
 		if p.glycerol > 0 {
 			p.gly = fmt.Sprintf("Glycerol: %.3f \u00B5L\n", p.glycerol)
+		} else {
+			p.gly = ""
 		}
 		if p.dmsoFinal > 0 {
 			p.dmso = fmt.Sprintf("DMSO: %.3f \u00B5L\n", p.dmsoFinal)
+		} else {
+			p.dmso = ""
 		}
 		p.str = fmt.Sprintf("%.f reactions of %.2f \u00B5L need:\n\n",
 			p.reactionNum, reactionVol) +
