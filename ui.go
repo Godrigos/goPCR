@@ -17,7 +17,7 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	// Define action button
 	calc := widget.NewButton("Calculate", p.calculate)
 
-	// Define widget for labels and values of stock tab
+	// Define widgets for labels and values of stock tab
 	p.bufferLab = widget.NewLabel("Buffer:")
 	p.bufferVal = widget.NewEntry()
 	p.bufferValScrl = widget.NewHScrollContainer(p.bufferVal)
@@ -73,7 +73,21 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	p.dnacValScrl = widget.NewHScrollContainer(p.dnacVal)
 	p.dnacUnit = widget.NewLabel("ng/\u00B5L")
 
-	// Define widget for labels and values of PCR tab
+	stockTab := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
+		p.bufferLab, p.bufferValScrl, p.bufferUnit,
+		p.dntpsLab, p.dntpsValScrl, p.dntpsUnit,
+		p.mgcl2Lab, p.mgcl2ValScrl, p.mgcl2Unit,
+		p.primer1Lab, p.primer1ValScrl, p.primer1Unit,
+		p.primer2Lab, p.primer2ValScrl, p.primer2Unit,
+		p.primer3Lab, p.primer3ValScrl, p.primer3Unit,
+		p.primer4Lab, p.primer4ValScrl, p.primer4Unit,
+		p.glycerolLab, p.glycerolValScrl, p.glycerolUnit,
+		p.dmsoLab, p.dmsoValScrl, p.dmsoUnit,
+		p.taqLab, p.taqValScrl, p.taqUnit,
+		p.dnacLab, p.dnacValScrl, p.dnacUnit)
+	stockGroup := widget.NewTabItem("Stock", stockTab)
+
+	// Define widgets for labels and values of PCR tab
 	p.bufferLabMix = widget.NewLabel("Buffer:")
 	p.bufferValMix = widget.NewEntry()
 	p.bufferValMixScrl = widget.NewHScrollContainer(p.bufferValMix)
@@ -88,17 +102,6 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	p.mgcl2ValMix = widget.NewEntry()
 	p.mgcl2ValMixScrl = widget.NewHScrollContainer(p.mgcl2ValMix)
 	p.mgcl2UnitMix = widget.NewLabel("nmol/\u00B5L")
-
-	// Define widget for labels and values of mix tab
-	p.reactionVolLab = widget.NewLabel("Volume:")
-	p.reactionVolVal = widget.NewEntry()
-	p.reactionVolValScrl = widget.NewHScrollContainer(p.reactionVolVal)
-	p.reactionVolUnit = widget.NewLabel("\u00B5L")
-
-	p.reactionNumLab = widget.NewLabel("Reactions:")
-	p.reactionNumVal = widget.NewEntry()
-	p.reactionNumValScrl = widget.NewHScrollContainer(p.reactionNumVal)
-	p.reactionNumUnit = widget.NewLabel("x")
 
 	p.primer1LabMix = widget.NewLabel("Primer 1:")
 	p.primer1ValMix = widget.NewEntry()
@@ -140,21 +143,7 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	p.dnacValMixScrl = widget.NewHScrollContainer(p.dnacValMix)
 	p.dnacUnitMix = widget.NewLabel("ng")
 
-	stockTab := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
-		p.bufferLab, p.bufferValScrl, p.bufferUnit,
-		p.dntpsLab, p.dntpsValScrl, p.dntpsUnit,
-		p.mgcl2Lab, p.mgcl2ValScrl, p.mgcl2Unit,
-		p.primer1Lab, p.primer1ValScrl, p.primer1Unit,
-		p.primer2Lab, p.primer2ValScrl, p.primer2Unit,
-		p.primer3Lab, p.primer3ValScrl, p.primer3Unit,
-		p.primer4Lab, p.primer4ValScrl, p.primer4Unit,
-		p.glycerolLab, p.glycerolValScrl, p.glycerolUnit,
-		p.dmsoLab, p.dmsoValScrl, p.dmsoUnit,
-		p.taqLab, p.taqValScrl, p.taqUnit,
-		p.dnacLab, p.dnacValScrl, p.dnacUnit)
-	stockGroup := widget.NewTabItem("Stock", stockTab)
-
-	mixTab := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
+	pcrTab := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
 		p.bufferLabMix, p.bufferValMixScrl, p.bufferUnitMix,
 		p.dntpsLabMix, p.dntpsValMixScrl, p.dntpsUnitMix,
 		p.mgcl2LabMix, p.mgcl2ValMixScrl, p.mgcl2UnitMix,
@@ -166,17 +155,57 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 		p.dmsoLabMix, p.dmsoValMixScrl, p.dmsoUnitMix,
 		p.taqLabMix, p.taqValMixScrl, p.taqUnitMix,
 		p.dnacLabMix, p.dnacValMixScrl, p.dnacUnitMix)
-	mixGroup := widget.NewTabItem("PCR", mixTab)
+	pcrGroup := widget.NewTabItem("PCR", pcrTab)
 
-	final := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
+	// Define widgets for labels and values of mix tab
+	p.reactionVolLab = widget.NewLabel("Volume:")
+	p.reactionVolVal = widget.NewEntry()
+	p.reactionVolValScrl = widget.NewHScrollContainer(p.reactionVolVal)
+	p.reactionVolUnit = widget.NewLabel("\u00B5L")
+
+	p.reactionNumLab = widget.NewLabel("Reactions:")
+	p.reactionNumVal = widget.NewEntry()
+	p.reactionNumValScrl = widget.NewHScrollContainer(p.reactionNumVal)
+	p.reactionNumUnit = widget.NewLabel("x")
+
+	mix := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
 		p.reactionVolLab, p.reactionVolValScrl, p.reactionVolUnit,
 		p.reactionNumLab, p.reactionNumValScrl, p.reactionNumUnit)
-	finalTab := fyne.NewContainerWithLayout(layout.NewBorderLayout(final,
-		calc, nil, nil), final, calc)
-	finalGroup := widget.NewTabItem("Mix", finalTab)
+	mixTab := fyne.NewContainerWithLayout(layout.NewBorderLayout(mix,
+		calc, nil, nil), mix, calc)
+	mixGroup := widget.NewTabItem("Mix", mixTab)
+
+	// Define widgets for setting tab
+	p.customStock = widget.NewSelectEntry([]string{"Buffer",
+		"DNTPs", "MgCl₂", "Primer 1", "Primer 2", "Primer 3", "Primer 4",
+		"Glycerol", "DMSO", "Taq", "DNA"})
+	p.selectStockVal = widget.NewEntry()
+	p.selectStockScrl = widget.NewHScrollContainer(p.selectStockVal)
+	p.selectStockBtn = widget.NewButton("Save", p.saveCustomStock)
+	customStockSet := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
+		p.customStock, p.selectStockScrl, p.selectStockBtn)
+	stockSet := fyne.NewContainerWithLayout(layout.NewBorderLayout(customStockSet,
+		nil, nil, nil), customStockSet)
+
+	p.customPCR = widget.NewSelectEntry([]string{"Buffer",
+		"DNTPs", "MgCl₂", "Primer 1", "Primer 2", "Primer 3", "Primer 4",
+		"Glycerol", "DMSO", "Taq", "DNA"})
+	p.selectPCRVal = widget.NewEntry()
+	p.selectPCRScrl = widget.NewHScrollContainer(p.selectPCRVal)
+	p.selectPCRBtn = widget.NewButton("Save", p.saveCustomPCR)
+	customPCRSet := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
+		p.customPCR, p.selectPCRScrl, p.selectPCRBtn)
+	pcrSet := fyne.NewContainerWithLayout(layout.NewBorderLayout(customPCRSet,
+		nil, nil, nil), customPCRSet)
+
+	set := fyne.NewContainerWithLayout(layout.NewAdaptiveGridLayout(1),
+		pcrSet, stockSet)
+
+	customTab := widget.NewTabItemWithIcon("", theme.SettingsIcon(),
+		set)
 
 	// Create tab widget
-	tabs := widget.NewTabContainer(mixGroup, finalGroup, stockGroup)
+	tabs := widget.NewTabContainer(pcrGroup, mixGroup, stockGroup, customTab)
 
 	return tabs
 }

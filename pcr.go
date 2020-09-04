@@ -6,6 +6,7 @@ import (
 )
 
 type pcr struct {
+	// Application and main windows fields
 	application fyne.App
 	w           fyne.Window
 
@@ -67,4 +68,13 @@ type pcr struct {
 	dnaPCR, dnaStock, dna          float64
 	h2o, mixVolume                 float64
 	p2p3p4, gly, dmso, str         string
+
+	// Custom values fields
+
+	customStock                                   *widget.SelectEntry
+	customPCR                                     *widget.SelectEntry
+	customMix                                     *widget.SelectEntry
+	selectStockVal, selectPCRVal, selectMixVal    *widget.Entry
+	selectStockScrl, selectPCRScrl, selectMixScrl *widget.ScrollContainer
+	selectStockBtn, selectPCRBtn, selectMixBtn    *widget.Button
 }
