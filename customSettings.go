@@ -113,7 +113,7 @@ func (p *pcr) saveCustomMix() {
 			p.application.Preferences().SetString("MixReactNum", p.selectMixVal.Text)
 		default:
 		}
-		str := ("Default value for\n" + " Mix " + p.customMix.Text +
+		str := ("Default value for\n" + " mix " + p.customMix.Text +
 			"\nchanged successfully!")
 		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 			fyne.TextStyle{})

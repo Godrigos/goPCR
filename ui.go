@@ -176,20 +176,12 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	mixGroup := widget.NewTabItem("Mix", mixTab)
 
 	// Define widgets for setting tab
-	p.customStock = widget.NewSelectEntry([]string{"Buffer",
-		"DNTPs", "MgCl₂", "Primer 1", "Primer 2", "Primer 3", "Primer 4",
-		"Glycerol", "DMSO", "Taq", "DNA"})
-	p.selectStockVal = widget.NewEntry()
-	p.selectStockScrl = widget.NewHScrollContainer(p.selectStockVal)
-	p.selectStockBtn = widget.NewButton("Save", p.saveCustomStock)
-	customStockSet := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
-		p.customStock, p.selectStockScrl, p.selectStockBtn)
-	stockSet := fyne.NewContainerWithLayout(layout.NewBorderLayout(customStockSet,
-		nil, nil, nil), customStockSet)
-
+	pcrSetLabel := widget.NewLabelWithStyle("PCR Values:",
+		fyne.TextAlignLeading, fyne.TextStyle{Bold: true})
 	p.customPCR = widget.NewSelectEntry([]string{"Buffer",
 		"DNTPs", "MgCl₂", "Primer 1", "Primer 2", "Primer 3", "Primer 4",
 		"Glycerol", "DMSO", "Taq", "DNA"})
+	p.customPCR.Disable()
 	p.selectPCRVal = widget.NewEntry()
 	p.selectPCRScrl = widget.NewHScrollContainer(p.selectPCRVal)
 	p.selectPCRBtn = widget.NewButton("Save", p.saveCustomPCR)
@@ -198,14 +190,50 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	pcrSet := fyne.NewContainerWithLayout(layout.NewBorderLayout(customPCRSet,
 		nil, nil, nil), customPCRSet)
 
-	set := fyne.NewContainerWithLayout(layout.NewAdaptiveGridLayout(1),
-		pcrSet, stockSet)
+	mixSetLabel := widget.NewLabelWithStyle("Mix Values:",
+		fyne.TextAlignLeading, fyne.TextStyle{Bold: true})
+	p.customMix = widget.NewSelectEntry([]string{"Volume",
+		"Reaction Number"})
+	p.customMix.Disable()
+	p.selectMixVal = widget.NewEntry()
+	p.selectMixScrl = widget.NewHScrollContainer(p.selectMixVal)
+	p.selectMixBtn = widget.NewButton("Save", p.saveCustomMix)
+	customMixSet := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
+		p.customMix, p.selectMixScrl, p.selectMixBtn)
+	mixSet := fyne.NewContainerWithLayout(layout.NewBorderLayout(customMixSet,
+		nil, nil, nil), customMixSet)
 
-	customTab := widget.NewTabItemWithIcon("", theme.SettingsIcon(),
-		set)
+	stockSetLabel := widget.NewLabelWithStyle("Stock Values:",
+		fyne.TextAlignLeading, fyne.TextStyle{Bold: true})
+	p.customStock = widget.NewSelectEntry([]string{"Buffer",
+		"DNTPs", "MgCl₂", "Primer 1", "Primer 2", "Primer 3", "Primer 4",
+		"Glycerol", "DMSO", "Taq", "DNA"})
+	p.customStock.Disable()
+	p.selectStockVal = widget.NewEntry()
+	p.selectStockScrl = widget.NewHScrollContainer(p.selectStockVal)
+	p.selectStockBtn = widget.NewButton("Save", p.saveCustomStock)
+	customStockSet := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
+		p.customStock, p.selectStockScrl, p.selectStockBtn)
+	stockSet := fyne.NewContainerWithLayout(layout.NewBorderLayout(
+		customStockSet, nil, nil, nil), customStockSet)
+
+	warning := widget.NewLabelWithStyle("\nAll changes saved will take"+
+		" effect after application restart!",
+		fyne.TextAlignCenter, fyne.TextStyle{})
+
+	set := fyne.NewContainerWithLayout(layout.NewGridLayout(1),
+		pcrSetLabel, pcrSet, mixSetLabel, mixSet, stockSetLabel, stockSet,
+		warning)
+	defaultBtn := widget.NewButton("Restore Defaults", p.restore)
+
+	setGroup := fyne.NewContainerWithLayout(layout.NewBorderLayout(
+		set, defaultBtn, nil, nil), set, defaultBtn)
+
+	settingsTab := widget.NewTabItemWithIcon("", theme.SettingsIcon(),
+		setGroup)
 
 	// Create tab widget
-	tabs := widget.NewTabContainer(pcrGroup, mixGroup, stockGroup, customTab)
+	tabs := widget.NewTabContainer(pcrGroup, mixGroup, stockGroup, settingsTab)
 
 	return tabs
 }

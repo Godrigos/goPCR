@@ -12,7 +12,6 @@ func (p *pcr) checkFloat(err error, s string) bool {
 		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 			fyne.TextStyle{})
 		dialog.ShowCustom("Error", "Ok", warning, p.w)
-
 		return true
 	}
 	return false
