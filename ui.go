@@ -12,7 +12,7 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	p.application = app.NewWithID("com.github.godrigos.goPCR")
 	p.w = p.application.NewWindow("goPCR")
 	p.w.SetIcon(icon)
-	p.application.Settings().SetTheme(theme.LightTheme())
+	p.setTheme()
 
 	// Define action button
 	calc := widget.NewButton("Calculate", p.calculate)
@@ -226,8 +226,16 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 		warning)
 	defaultBtn := widget.NewButton("Restore Defaults", p.restore)
 
+	darkThemeBtn := widget.NewButton("Dark", p.darkTheme)
+	lightThemeBtn := widget.NewButton("Light", p.lightTheme)
+	themeBtn := fyne.NewContainerWithLayout(layout.NewGridLayout(2),
+		darkThemeBtn, lightThemeBtn)
+
+	btns := fyne.NewContainerWithLayout(layout.NewBorderLayout(
+		defaultBtn, themeBtn, nil, nil), defaultBtn, themeBtn)
+
 	setGroup := fyne.NewContainerWithLayout(layout.NewBorderLayout(
-		set, defaultBtn, nil, nil), set, defaultBtn)
+		set, btns, nil, nil), set, btns)
 
 	settingsTab := widget.NewTabItemWithIcon("", theme.SettingsIcon(),
 		setGroup)
