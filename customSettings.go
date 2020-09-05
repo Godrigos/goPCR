@@ -16,6 +16,8 @@ func (p *pcr) saveCustomStock() {
 		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 			fyne.TextStyle{})
 		dialog.ShowCustom("Error", "Ok", warning, p.w)
+		p.customStock.SetText("")
+		p.selectStockVal.SetText("")
 	} else {
 		switch p.customStock.Text {
 		case "Buffer":
@@ -52,6 +54,8 @@ func (p *pcr) saveCustomStock() {
 		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 			fyne.TextStyle{})
 		dialog.ShowCustom("Done", "Ok", warning, p.w)
+		p.customStock.SetText("")
+		p.selectStockVal.SetText("")
 	}
 }
 
@@ -63,6 +67,8 @@ func (p *pcr) saveCustomPCR() {
 		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 			fyne.TextStyle{})
 		dialog.ShowCustom("Error", "Ok", warning, p.w)
+		p.customPCR.SetText("")
+		p.selectPCRVal.SetText("")
 	} else {
 		switch p.customPCR.Text {
 		case "Buffer":
@@ -94,6 +100,8 @@ func (p *pcr) saveCustomPCR() {
 		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 			fyne.TextStyle{})
 		dialog.ShowCustom("Done", "Ok", warning, p.w)
+		p.customPCR.SetText("")
+		p.selectPCRVal.SetText("")
 	}
 }
 
@@ -105,11 +113,13 @@ func (p *pcr) saveCustomMix() {
 		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 			fyne.TextStyle{})
 		dialog.ShowCustom("Error", "Ok", warning, p.w)
+		p.customMix.SetText("")
+		p.selectMixVal.SetText("")
 	} else {
 		switch p.customMix.Text {
 		case "Volume":
 			p.application.Preferences().SetString("MixVolume", p.selectMixVal.Text)
-		case "Reaction Number":
+		case "Reactions":
 			p.application.Preferences().SetString("MixReactNum", p.selectMixVal.Text)
 		default:
 		}
@@ -118,5 +128,7 @@ func (p *pcr) saveCustomMix() {
 		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 			fyne.TextStyle{})
 		dialog.ShowCustom("Done", "Ok", warning, p.w)
+		p.customMix.SetText("")
+		p.selectMixVal.SetText("")
 	}
 }

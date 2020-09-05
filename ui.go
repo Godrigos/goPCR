@@ -193,7 +193,7 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	mixSetLabel := widget.NewLabelWithStyle("Mix Values:",
 		fyne.TextAlignLeading, fyne.TextStyle{Bold: true})
 	p.customMix = widget.NewSelectEntry([]string{"Volume",
-		"Reaction Number"})
+		"Reactions"})
 	p.customMix.Disable()
 	p.selectMixVal = widget.NewEntry()
 	p.selectMixScrl = widget.NewHScrollContainer(p.selectMixVal)
@@ -217,8 +217,8 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	stockSet := fyne.NewContainerWithLayout(layout.NewBorderLayout(
 		customStockSet, nil, nil, nil), customStockSet)
 
-	warning := widget.NewLabelWithStyle("\nAll changes saved will take"+
-		" effect after application restart!",
+	warning := widget.NewLabelWithStyle("All saved changes will take"+
+		" effect\nafter application restart!",
 		fyne.TextAlignCenter, fyne.TextStyle{})
 
 	set := fyne.NewContainerWithLayout(layout.NewGridLayout(1),
