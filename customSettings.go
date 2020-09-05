@@ -18,6 +18,13 @@ func (p *pcr) saveCustomStock() {
 		dialog.ShowCustom("Error", "Ok", warning, p.w)
 		p.customStock.SetText("")
 		p.selectStockVal.SetText("")
+	} else if p.customStock.Text == "" {
+		str := ("Select a value to change!")
+		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
+			fyne.TextStyle{})
+		dialog.ShowCustom("Error", "Ok", warning, p.w)
+		p.customStock.SetText("")
+		p.selectStockVal.SetText("")
 	} else {
 		switch p.customStock.Text {
 		case "Buffer":
@@ -69,6 +76,13 @@ func (p *pcr) saveCustomPCR() {
 		dialog.ShowCustom("Error", "Ok", warning, p.w)
 		p.customPCR.SetText("")
 		p.selectPCRVal.SetText("")
+	} else if p.customPCR.Text == "" {
+		str := ("Select a value to change!")
+		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
+			fyne.TextStyle{})
+		dialog.ShowCustom("Error", "Ok", warning, p.w)
+		p.customPCR.SetText("")
+		p.selectPCRVal.SetText("")
 	} else {
 		switch p.customPCR.Text {
 		case "Buffer":
@@ -110,6 +124,13 @@ func (p *pcr) saveCustomMix() {
 	if err != nil {
 		str := ("Non numerical value for\n" + " mix " + p.customMix.Text +
 			"!" + "\nNot applying changes!")
+		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
+			fyne.TextStyle{})
+		dialog.ShowCustom("Error", "Ok", warning, p.w)
+		p.customMix.SetText("")
+		p.selectMixVal.SetText("")
+	} else if p.customMix.Text == "" {
+		str := ("Select a value to change!")
 		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
 			fyne.TextStyle{})
 		dialog.ShowCustom("Error", "Ok", warning, p.w)
