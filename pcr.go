@@ -54,7 +54,7 @@ type pcr struct {
 	glycerolUnitMix, dmsoUnitMix, taqUnitMix, dnacUnitMix     *widget.Label
 
 	// Define results fields
-	reactionVol, reactionNum       float64
+	reactionNum                    float64
 	bufferPCR, bufferStock, buffer float64
 	dntpsPCR, dntpsStock, dntps    float64
 	mgcl2PCR, mgcl2Stock, mgcl2    float64
