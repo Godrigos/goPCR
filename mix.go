@@ -180,7 +180,7 @@ func (p *pcr) calculate() {
 			fyne.TextAlignCenter, fyne.TextStyle{})
 		finalDialog := fyne.NewContainerWithLayout(layout.NewBorderLayout(results,
 			dnaSample, nil, nil), results, dnaSample)
-		dialog.ShowCustomConfirm("PCR Mix", "Save", "Cancel", finalDialog,
-			p.save, p.w)
+		dialog.ShowCustomConfirm("PCR Mix", "Copy", "Cancel", finalDialog,
+			p.copyClip, p.w)
 	}
 }

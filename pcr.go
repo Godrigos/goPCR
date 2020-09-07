@@ -67,7 +67,7 @@ type pcr struct {
 	taqPCR, taqStock, taq          float64
 	dnaPCR, dnaStock, dna          float64
 	h2o, mixVolume                 float64
-	p2p3p4, gly, dmso, str         string
+	p2p3p4, gly, dmso, str, clip   string
 
 	// Custom values fields
 
