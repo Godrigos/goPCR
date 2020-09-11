@@ -23,7 +23,7 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	p.bufferValScrl = widget.NewHScrollContainer(p.bufferVal)
 	p.bufferUnit = widget.NewLabel("x")
 
-	p.dntpsLab = widget.NewLabel("DNTPs:")
+	p.dntpsLab = widget.NewLabel("dNTPs:")
 	p.dntpsVal = widget.NewEntry()
 	p.dntpsValScrl = widget.NewHScrollContainer(p.dntpsVal)
 	p.dntpsUnit = widget.NewLabel("nmol/\u00B5L")
@@ -93,7 +93,7 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	p.bufferValMixScrl = widget.NewHScrollContainer(p.bufferValMix)
 	p.bufferUnitMix = widget.NewLabel("x")
 
-	p.dntpsLabMix = widget.NewLabel("DNTPs:")
+	p.dntpsLabMix = widget.NewLabel("dNTPs:")
 	p.dntpsValMix = widget.NewEntry()
 	p.dntpsValMixScrl = widget.NewHScrollContainer(p.dntpsValMix)
 	p.dntpsUnitMix = widget.NewLabel("nmol/\u00B5L")
