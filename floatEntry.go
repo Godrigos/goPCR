@@ -23,5 +23,12 @@ func (e *floatEntry) TypedRune(r rune) {
 	if !reg.MatchString(string(r)) {
 		return
 	}
+
+	reg2 := regexp.MustCompile(`[.]`)
+
+	if reg2.MatchString(e.Text) && r == '.' {
+		return
+	}
+
 	e.Entry.TypedRune(r)
 }
