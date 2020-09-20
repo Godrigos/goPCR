@@ -17,6 +17,7 @@ func newFloatEntry() *floatEntry {
 }
 
 // TypedRune receives text input events when the Entry widget is focused.
+// It filter input so only numbers and a single '.' are allowed.
 // Implements: fyne.Focusable
 func (e *floatEntry) TypedRune(r rune) {
 	reg := regexp.MustCompile(`[0-9]|[.]`)
@@ -25,7 +26,6 @@ func (e *floatEntry) TypedRune(r rune) {
 	}
 
 	reg2 := regexp.MustCompile(`[.]`)
-
 	if reg2.MatchString(e.Text) && r == '.' {
 		return
 	}
