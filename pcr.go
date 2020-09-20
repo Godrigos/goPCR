@@ -15,9 +15,9 @@ type pcr struct {
 	primer2Lab, primer3Lab, primer4Lab, glycerolLab *widget.Label
 	dmsoLab, taqLab, dnacLab                        *widget.Label
 
-	bufferVal, dntpsVal, mgcl2Val, primer1Val       *widget.Entry
-	primer2Val, primer3Val, primer4Val, glycerolVal *widget.Entry
-	dmsoVal, taqVal, dnacVal                        *widget.Entry
+	bufferVal, dntpsVal, mgcl2Val, primer1Val       *floatEntry
+	primer2Val, primer3Val, primer4Val, glycerolVal *floatEntry
+	dmsoVal, taqVal, dnacVal                        *floatEntry
 
 	bufferValScrl, dntpsValScrl, mgcl2ValScrl      *widget.ScrollContainer
 	primer1ValScrl, primer2ValScrl, primer3ValScrl *widget.ScrollContainer
@@ -30,7 +30,7 @@ type pcr struct {
 
 	// Define fields for labels and values of mix tab
 	reactionVolLab, reactionNumLab         *widget.Label
-	reactionVolVal, reactionNumVal         *widget.Entry
+	reactionVolVal, reactionNumVal         *floatEntry
 	reactionVolValScrl, reactionNumValScrl *widget.ScrollContainer
 	reactionVolUnit, reactionNumUnit       *widget.Label
 
@@ -39,9 +39,9 @@ type pcr struct {
 	primer2LabMix, primer3LabMix, primer4LabMix, glycerolLabMix *widget.Label
 	dmsoLabMix, taqLabMix, dnacLabMix                           *widget.Label
 
-	bufferValMix, dntpsValMix, mgcl2ValMix, primer1ValMix       *widget.Entry
-	primer2ValMix, primer3ValMix, primer4ValMix, glycerolValMix *widget.Entry
-	dmsoValMix, taqValMix, dnacValMix                           *widget.Entry
+	bufferValMix, dntpsValMix, mgcl2ValMix, primer1ValMix       *floatEntry
+	primer2ValMix, primer3ValMix, primer4ValMix, glycerolValMix *floatEntry
+	dmsoValMix, taqValMix, dnacValMix                           *floatEntry
 
 	bufferValMixScrl, dntpsValMixScrl, mgcl2ValMixScrl *widget.ScrollContainer
 	primer1ValMixScrl, primer2ValMixScrl               *widget.ScrollContainer
@@ -74,7 +74,7 @@ type pcr struct {
 	customStock                                   *widget.SelectEntry
 	customPCR                                     *widget.SelectEntry
 	customMix                                     *widget.SelectEntry
-	selectStockVal, selectPCRVal, selectMixVal    *widget.Entry
+	selectStockVal, selectPCRVal, selectMixVal    *floatEntry
 	selectStockScrl, selectPCRScrl, selectMixScrl *widget.ScrollContainer
 	selectStockBtn, selectPCRBtn, selectMixBtn    *widget.Button
 }

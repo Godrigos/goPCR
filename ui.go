@@ -19,57 +19,57 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 
 	// Define widgets for labels and values of stock tab
 	p.bufferLab = widget.NewLabel("Buffer:")
-	p.bufferVal = widget.NewEntry()
+	p.bufferVal = newFloatEntry()
 	p.bufferValScrl = widget.NewHScrollContainer(p.bufferVal)
 	p.bufferUnit = widget.NewLabel("x")
 
 	p.dntpsLab = widget.NewLabel("dNTPs:")
-	p.dntpsVal = widget.NewEntry()
+	p.dntpsVal = newFloatEntry()
 	p.dntpsValScrl = widget.NewHScrollContainer(p.dntpsVal)
 	p.dntpsUnit = widget.NewLabel("nmol/\u00B5L")
 
 	p.mgcl2Lab = widget.NewLabel("MgCl\u2082:")
-	p.mgcl2Val = widget.NewEntry()
+	p.mgcl2Val = newFloatEntry()
 	p.mgcl2ValScrl = widget.NewHScrollContainer(p.mgcl2Val)
 	p.mgcl2Unit = widget.NewLabel("nmol/\u00B5L")
 
 	p.primer1Lab = widget.NewLabel("Primer 1:")
-	p.primer1Val = widget.NewEntry()
+	p.primer1Val = newFloatEntry()
 	p.primer1ValScrl = widget.NewHScrollContainer(p.primer1Val)
 	p.primer1Unit = widget.NewLabel("pmol/\u00B5L")
 
 	p.primer2Lab = widget.NewLabel("Primer 2:")
-	p.primer2Val = widget.NewEntry()
+	p.primer2Val = newFloatEntry()
 	p.primer2ValScrl = widget.NewHScrollContainer(p.primer2Val)
 	p.primer2Unit = widget.NewLabel("pmol/\u00B5L")
 
 	p.primer3Lab = widget.NewLabel("Primer 3:")
-	p.primer3Val = widget.NewEntry()
+	p.primer3Val = newFloatEntry()
 	p.primer3ValScrl = widget.NewHScrollContainer(p.primer3Val)
 	p.primer3Unit = widget.NewLabel("pmol/\u00B5L")
 
 	p.primer4Lab = widget.NewLabel("Primer 4:")
-	p.primer4Val = widget.NewEntry()
+	p.primer4Val = newFloatEntry()
 	p.primer4ValScrl = widget.NewHScrollContainer(p.primer4Val)
 	p.primer4Unit = widget.NewLabel("pmol/\u00B5L")
 
 	p.glycerolLab = widget.NewLabel("Glycerol:")
-	p.glycerolVal = widget.NewEntry()
+	p.glycerolVal = newFloatEntry()
 	p.glycerolValScrl = widget.NewHScrollContainer(p.glycerolVal)
 	p.glycerolUnit = widget.NewLabel("%")
 
 	p.dmsoLab = widget.NewLabel("DMSO:")
-	p.dmsoVal = widget.NewEntry()
+	p.dmsoVal = newFloatEntry()
 	p.dmsoValScrl = widget.NewHScrollContainer(p.dmsoVal)
 	p.dmsoUnit = widget.NewLabel("%")
 
 	p.taqLab = widget.NewLabel("Taq:")
-	p.taqVal = widget.NewEntry()
+	p.taqVal = newFloatEntry()
 	p.taqValScrl = widget.NewHScrollContainer(p.taqVal)
 	p.taqUnit = widget.NewLabel("U/\u00B5L")
 
 	p.dnacLab = widget.NewLabel("DNA:")
-	p.dnacVal = widget.NewEntry()
+	p.dnacVal = newFloatEntry()
 	p.dnacValScrl = widget.NewHScrollContainer(p.dnacVal)
 	p.dnacUnit = widget.NewLabel("ng/\u00B5L")
 
@@ -89,57 +89,57 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 
 	// Define widgets for labels and values of PCR tab
 	p.bufferLabMix = widget.NewLabel("Buffer:")
-	p.bufferValMix = widget.NewEntry()
+	p.bufferValMix = newFloatEntry()
 	p.bufferValMixScrl = widget.NewHScrollContainer(p.bufferValMix)
 	p.bufferUnitMix = widget.NewLabel("x")
 
 	p.dntpsLabMix = widget.NewLabel("dNTPs:")
-	p.dntpsValMix = widget.NewEntry()
+	p.dntpsValMix = newFloatEntry()
 	p.dntpsValMixScrl = widget.NewHScrollContainer(p.dntpsValMix)
 	p.dntpsUnitMix = widget.NewLabel("nmol/\u00B5L")
 
 	p.mgcl2LabMix = widget.NewLabel("MgCl\u2082:")
-	p.mgcl2ValMix = widget.NewEntry()
+	p.mgcl2ValMix = newFloatEntry()
 	p.mgcl2ValMixScrl = widget.NewHScrollContainer(p.mgcl2ValMix)
 	p.mgcl2UnitMix = widget.NewLabel("nmol/\u00B5L")
 
 	p.primer1LabMix = widget.NewLabel("Primer 1:")
-	p.primer1ValMix = widget.NewEntry()
+	p.primer1ValMix = newFloatEntry()
 	p.primer1ValMixScrl = widget.NewHScrollContainer(p.primer1ValMix)
 	p.primer1UnitMix = widget.NewLabel("pmol/\u00B5L")
 
 	p.primer2LabMix = widget.NewLabel("Primer 2:")
-	p.primer2ValMix = widget.NewEntry()
+	p.primer2ValMix = newFloatEntry()
 	p.primer2ValMixScrl = widget.NewHScrollContainer(p.primer2ValMix)
 	p.primer2UnitMix = widget.NewLabel("pmol/\u00B5L")
 
 	p.primer3LabMix = widget.NewLabel("Primer 3:")
-	p.primer3ValMix = widget.NewEntry()
+	p.primer3ValMix = newFloatEntry()
 	p.primer3ValMixScrl = widget.NewHScrollContainer(p.primer3ValMix)
 	p.primer3UnitMix = widget.NewLabel("pmol/\u00B5L")
 
 	p.primer4LabMix = widget.NewLabel("Primer 4:")
-	p.primer4ValMix = widget.NewEntry()
+	p.primer4ValMix = newFloatEntry()
 	p.primer4ValMixScrl = widget.NewHScrollContainer(p.primer4ValMix)
 	p.primer4UnitMix = widget.NewLabel("pmol/\u00B5L")
 
 	p.glycerolLabMix = widget.NewLabel("Glycerol:")
-	p.glycerolValMix = widget.NewEntry()
+	p.glycerolValMix = newFloatEntry()
 	p.glycerolValMixScrl = widget.NewHScrollContainer(p.glycerolValMix)
 	p.glycerolUnitMix = widget.NewLabel("%")
 
 	p.dmsoLabMix = widget.NewLabel("DMSO:")
-	p.dmsoValMix = widget.NewEntry()
+	p.dmsoValMix = newFloatEntry()
 	p.dmsoValMixScrl = widget.NewHScrollContainer(p.dmsoValMix)
 	p.dmsoUnitMix = widget.NewLabel("%")
 
 	p.taqLabMix = widget.NewLabel("Taq:")
-	p.taqValMix = widget.NewEntry()
+	p.taqValMix = newFloatEntry()
 	p.taqValMixScrl = widget.NewHScrollContainer(p.taqValMix)
 	p.taqUnitMix = widget.NewLabel("U/\u00B5L")
 
 	p.dnacLabMix = widget.NewLabel("DNA:")
-	p.dnacValMix = widget.NewEntry()
+	p.dnacValMix = newFloatEntry()
 	p.dnacValMixScrl = widget.NewHScrollContainer(p.dnacValMix)
 	p.dnacUnitMix = widget.NewLabel("ng")
 
@@ -159,12 +159,12 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 
 	// Define widgets for labels and values of mix tab
 	p.reactionVolLab = widget.NewLabel("Volume:")
-	p.reactionVolVal = widget.NewEntry()
+	p.reactionVolVal = newFloatEntry()
 	p.reactionVolValScrl = widget.NewHScrollContainer(p.reactionVolVal)
 	p.reactionVolUnit = widget.NewLabel("\u00B5L")
 
 	p.reactionNumLab = widget.NewLabel("Reactions:")
-	p.reactionNumVal = widget.NewEntry()
+	p.reactionNumVal = newFloatEntry()
 	p.reactionNumValScrl = widget.NewHScrollContainer(p.reactionNumVal)
 	p.reactionNumUnit = widget.NewLabel("x")
 
@@ -182,7 +182,7 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 		"DNTPs", "MgCl₂", "Primer 1", "Primer 2", "Primer 3", "Primer 4",
 		"Glycerol", "DMSO", "Taq", "DNA"})
 	p.customPCR.Disable()
-	p.selectPCRVal = widget.NewEntry()
+	p.selectPCRVal = newFloatEntry()
 	p.selectPCRScrl = widget.NewHScrollContainer(p.selectPCRVal)
 	p.selectPCRBtn = widget.NewButton("Save", p.saveCustomPCR)
 	customPCRSet := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
@@ -195,7 +195,7 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 	p.customMix = widget.NewSelectEntry([]string{"Volume",
 		"Reactions"})
 	p.customMix.Disable()
-	p.selectMixVal = widget.NewEntry()
+	p.selectMixVal = newFloatEntry()
 	p.selectMixScrl = widget.NewHScrollContainer(p.selectMixVal)
 	p.selectMixBtn = widget.NewButton("Save", p.saveCustomMix)
 	customMixSet := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
@@ -209,7 +209,7 @@ func (p *pcr) loadUI(application fyne.App) *widget.TabContainer {
 		"DNTPs", "MgCl₂", "Primer 1", "Primer 2", "Primer 3", "Primer 4",
 		"Glycerol", "DMSO", "Taq", "DNA"})
 	p.customStock.Disable()
-	p.selectStockVal = widget.NewEntry()
+	p.selectStockVal = newFloatEntry()
 	p.selectStockScrl = widget.NewHScrollContainer(p.selectStockVal)
 	p.selectStockBtn = widget.NewButton("Save", p.saveCustomStock)
 	customStockSet := fyne.NewContainerWithLayout(layout.NewGridLayout(3),
