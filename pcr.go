@@ -1,8 +1,8 @@
 package main
 
 import (
-	"fyne.io/fyne"
-	"fyne.io/fyne/widget"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/widget"
 )
 
 type pcr struct {
@@ -19,20 +19,14 @@ type pcr struct {
 	primer2Val, primer3Val, primer4Val, glycerolVal *floatEntry
 	dmsoVal, taqVal, dnacVal                        *floatEntry
 
-	bufferValScrl, dntpsValScrl, mgcl2ValScrl      *widget.ScrollContainer
-	primer1ValScrl, primer2ValScrl, primer3ValScrl *widget.ScrollContainer
-	primer4ValScrl, glycerolValScrl, dmsoValScrl   *widget.ScrollContainer
-	taqValScrl, dnacValScrl                        *widget.ScrollContainer
-
 	bufferUnit, dntpsUnit, mgcl2Unit, primer1Unit       *widget.Label
 	primer2Unit, primer3Unit, primer4Unit, glycerolUnit *widget.Label
 	dmsoUnit, taqUnit, dnacUnit                         *widget.Label
 
 	// Define fields for labels and values of mix tab
-	reactionVolLab, reactionNumLab         *widget.Label
-	reactionVolVal, reactionNumVal         *floatEntry
-	reactionVolValScrl, reactionNumValScrl *widget.ScrollContainer
-	reactionVolUnit, reactionNumUnit       *widget.Label
+	reactionVolLab, reactionNumLab   *widget.Label
+	reactionVolVal, reactionNumVal   *floatEntry
+	reactionVolUnit, reactionNumUnit *widget.Label
 
 	// Define fields for labels and values of PCR tab
 	bufferLabMix, dntpsLabMix, mgcl2LabMix, primer1LabMix       *widget.Label
@@ -42,12 +36,6 @@ type pcr struct {
 	bufferValMix, dntpsValMix, mgcl2ValMix, primer1ValMix       *floatEntry
 	primer2ValMix, primer3ValMix, primer4ValMix, glycerolValMix *floatEntry
 	dmsoValMix, taqValMix, dnacValMix                           *floatEntry
-
-	bufferValMixScrl, dntpsValMixScrl, mgcl2ValMixScrl *widget.ScrollContainer
-	primer1ValMixScrl, primer2ValMixScrl               *widget.ScrollContainer
-	primer3ValMixScrl, primer4ValMixScrl               *widget.ScrollContainer
-	glycerolValMixScrl, dmsoValMixScrl                 *widget.ScrollContainer
-	taqValMixScrl, dnacValMixScrl                      *widget.ScrollContainer
 
 	bufferUnitMix, dntpsUnitMix, mgcl2UnitMix, primer1UnitMix *widget.Label
 	primer2UnitMix, primer3UnitMix, primer4UnitMix            *widget.Label
@@ -71,10 +59,9 @@ type pcr struct {
 
 	// Custom values fields
 
-	customStock                                   *widget.SelectEntry
-	customPCR                                     *widget.SelectEntry
-	customMix                                     *widget.SelectEntry
-	selectStockVal, selectPCRVal, selectMixVal    *floatEntry
-	selectStockScrl, selectPCRScrl, selectMixScrl *widget.ScrollContainer
-	selectStockBtn, selectPCRBtn, selectMixBtn    *widget.Button
+	customStock                                *widget.SelectEntry
+	customPCR                                  *widget.SelectEntry
+	customMix                                  *widget.SelectEntry
+	selectStockVal, selectPCRVal, selectMixVal *floatEntry
+	selectStockBtn, selectPCRBtn, selectMixBtn *widget.Button
 }

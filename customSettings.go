@@ -3,9 +3,9 @@ package main
 import (
 	"strconv"
 
-	"fyne.io/fyne"
-	"fyne.io/fyne/dialog"
-	"fyne.io/fyne/widget"
+	"fyne.io/fyne/v2"
+	"fyne.io/fyne/v2/dialog"
+	"fyne.io/fyne/v2/widget"
 )
 
 func (p *pcr) saveCustomStock() {
@@ -26,6 +26,7 @@ func (p *pcr) saveCustomStock() {
 		p.customStock.SetText("")
 		p.selectStockVal.SetText("")
 	} else {
+		msg := true
 		switch p.customStock.Text {
 		case "Buffer":
 			p.application.Preferences().SetString("StockBuffer",
@@ -55,14 +56,23 @@ func (p *pcr) saveCustomStock() {
 		case "DNA":
 			p.application.Preferences().SetString("StockDNA", p.selectStockVal.Text)
 		default:
+			str := ("Wrong field name, select from menu!")
+			warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
+				fyne.TextStyle{})
+			dialog.ShowCustom("Error", "Ok", warning, p.w)
+			p.customStock.SetText("")
+			p.selectStockVal.SetText("")
+			msg = false
 		}
-		str := ("Default value for\n" + " stock " + p.customStock.Text +
-			"\nchanged successfully!")
-		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
-			fyne.TextStyle{})
-		dialog.ShowCustom("Done", "Ok", warning, p.w)
-		p.customStock.SetText("")
-		p.selectStockVal.SetText("")
+		if msg {
+			str := ("Default value for\n" + " stock " + p.customStock.Text +
+				"\nchanged successfully!")
+			warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
+				fyne.TextStyle{})
+			dialog.ShowCustom("Done", "Ok", warning, p.w)
+			p.customStock.SetText("")
+			p.selectStockVal.SetText("")
+		}
 	}
 }
 
@@ -84,6 +94,7 @@ func (p *pcr) saveCustomPCR() {
 		p.customPCR.SetText("")
 		p.selectPCRVal.SetText("")
 	} else {
+		msg := true
 		switch p.customPCR.Text {
 		case "Buffer":
 			p.application.Preferences().SetString("PCRBuffer", p.selectPCRVal.Text)
@@ -108,14 +119,23 @@ func (p *pcr) saveCustomPCR() {
 		case "DNA":
 			p.application.Preferences().SetString("PCRDNA", p.selectPCRVal.Text)
 		default:
+			str := ("Wrong field name, select from menu!")
+			warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
+				fyne.TextStyle{})
+			dialog.ShowCustom("Error", "Ok", warning, p.w)
+			p.customPCR.SetText("")
+			p.selectPCRVal.SetText("")
+			msg = false
 		}
-		str := ("Default value for\n" + " PCR " + p.customPCR.Text +
-			"\nchanged successfully!")
-		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
-			fyne.TextStyle{})
-		dialog.ShowCustom("Done", "Ok", warning, p.w)
-		p.customPCR.SetText("")
-		p.selectPCRVal.SetText("")
+		if msg {
+			str := ("Default value for\n" + " PCR " + p.customPCR.Text +
+				"\nchanged successfully!")
+			warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
+				fyne.TextStyle{})
+			dialog.ShowCustom("Done", "Ok", warning, p.w)
+			p.customPCR.SetText("")
+			p.selectPCRVal.SetText("")
+		}
 	}
 }
 
@@ -137,19 +157,29 @@ func (p *pcr) saveCustomMix() {
 		p.customMix.SetText("")
 		p.selectMixVal.SetText("")
 	} else {
+		msg := true
 		switch p.customMix.Text {
 		case "Volume":
 			p.application.Preferences().SetString("MixVolume", p.selectMixVal.Text)
 		case "Reactions":
 			p.application.Preferences().SetString("MixReactNum", p.selectMixVal.Text)
 		default:
+			str := ("Wrong field name, select from menu!")
+			warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
+				fyne.TextStyle{})
+			dialog.ShowCustom("Error", "Ok", warning, p.w)
+			p.customMix.SetText("")
+			p.selectMixVal.SetText("")
+			msg = false
 		}
-		str := ("Default value for\n" + " mix " + p.customMix.Text +
-			"\nchanged successfully!")
-		warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
-			fyne.TextStyle{})
-		dialog.ShowCustom("Done", "Ok", warning, p.w)
-		p.customMix.SetText("")
-		p.selectMixVal.SetText("")
+		if msg {
+			str := ("Default value for\n" + " mix " + p.customMix.Text +
+				"\nchanged successfully!")
+			warning := widget.NewLabelWithStyle(str, fyne.TextAlignCenter,
+				fyne.TextStyle{})
+			dialog.ShowCustom("Done", "Ok", warning, p.w)
+			p.customMix.SetText("")
+			p.selectMixVal.SetText("")
+		}
 	}
 }

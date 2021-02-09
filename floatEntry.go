@@ -4,7 +4,7 @@ import (
 	"regexp"
 	"strings"
 
-	"fyne.io/fyne/widget"
+	"fyne.io/fyne/v2/widget"
 )
 
 type floatEntry struct {
