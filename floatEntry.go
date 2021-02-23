@@ -4,6 +4,7 @@ import (
 	"regexp"
 	"strings"
 
+	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/widget"
 )
 
@@ -13,6 +14,7 @@ type floatEntry struct {
 
 func newFloatEntry() *floatEntry {
 	entry := &floatEntry{}
+	entry.Wrapping = fyne.TextTruncate
 	entry.ExtendBaseWidget(entry)
 	return entry
 }
