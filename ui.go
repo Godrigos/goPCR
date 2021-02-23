@@ -12,7 +12,7 @@ import (
 func (p *pcr) loadUI(application fyne.App) *container.AppTabs {
 	p.application = app.NewWithID("com.github.godrigos.goPCR")
 	p.w = p.application.NewWindow("goPCR")
-	p.w.SetIcon(icon)
+	p.w.SetIcon(resourceIconPng)
 	p.setTheme()
 
 	// Define action button
