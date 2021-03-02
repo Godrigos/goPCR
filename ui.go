@@ -75,9 +75,7 @@ func (p *pcr) loadUI(application fyne.App) *container.AppTabs {
 		p.dmsoLab, p.dmsoVal, p.dmsoUnit,
 		p.taqLab, p.taqVal, p.taqUnit,
 		p.dnacLab, p.dnacVal, p.dnacUnit)
-	stockTab2 := fyne.NewContainerWithLayout(layout.NewBorderLayout(stockTab,
-		nil, nil, nil), stockTab)
-	stockGroup := container.NewTabItem("Stock", stockTab2)
+	stockGroup := container.NewTabItem("Stock", stockTab)
 
 	// Define widgets for labels and values of PCR tab
 	p.bufferLabMix = widget.NewLabel("Buffer:")
@@ -136,9 +134,7 @@ func (p *pcr) loadUI(application fyne.App) *container.AppTabs {
 		p.dmsoLabMix, p.dmsoValMix, p.dmsoUnitMix,
 		p.taqLabMix, p.taqValMix, p.taqUnitMix,
 		p.dnacLabMix, p.dnacValMix, p.dnacUnitMix)
-	pcrTab2 := fyne.NewContainerWithLayout(layout.NewBorderLayout(pcrTab,
-		nil, nil, nil), pcrTab)
-	pcrGroup := container.NewTabItem("PCR", pcrTab2)
+	pcrGroup := container.NewTabItem("PCR", pcrTab)
 
 	// Define widgets for labels and values of mix tab
 	p.reactionVolLab = widget.NewLabel("Volume:")
