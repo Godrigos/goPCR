@@ -75,7 +75,9 @@ func (p *pcr) loadUI(application fyne.App) *container.AppTabs {
 		p.dmsoLab, p.dmsoVal, p.dmsoUnit,
 		p.taqLab, p.taqVal, p.taqUnit,
 		p.dnacLab, p.dnacVal, p.dnacUnit)
-	stockGroup := container.NewTabItem("Stock", stockTab)
+	stockTab2 := fyne.NewContainerWithLayout(layout.NewBorderLayout(stockTab,
+		nil, nil, nil), stockTab)
+	stockGroup := container.NewTabItem("Stock", stockTab2)
 
 	// Define widgets for labels and values of PCR tab
 	p.bufferLabMix = widget.NewLabel("Buffer:")
@@ -134,7 +136,9 @@ func (p *pcr) loadUI(application fyne.App) *container.AppTabs {
 		p.dmsoLabMix, p.dmsoValMix, p.dmsoUnitMix,
 		p.taqLabMix, p.taqValMix, p.taqUnitMix,
 		p.dnacLabMix, p.dnacValMix, p.dnacUnitMix)
-	pcrGroup := container.NewTabItem("PCR", pcrTab)
+	pcrTab2 := fyne.NewContainerWithLayout(layout.NewBorderLayout(pcrTab,
+		nil, nil, nil), pcrTab)
+	pcrGroup := container.NewTabItem("PCR", pcrTab2)
 
 	// Define widgets for labels and values of mix tab
 	p.reactionVolLab = widget.NewLabel("Volume:")
@@ -188,8 +192,8 @@ func (p *pcr) loadUI(application fyne.App) *container.AppTabs {
 	stockSet := fyne.NewContainerWithLayout(layout.NewBorderLayout(
 		customStockSet, nil, nil, nil), customStockSet)
 
-	warning := widget.NewLabelWithStyle("All saved changes will take"+
-		" effect\nafter application restart!",
+	warning := widget.NewLabelWithStyle("Changes will take"+
+		" effect after restart!",
 		fyne.TextAlignCenter, fyne.TextStyle{})
 
 	set := fyne.NewContainerWithLayout(layout.NewGridLayout(1),
