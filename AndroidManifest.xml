@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:versionCode="1"
+    android:versionName="1.2.3"
+    package="com.github.godrigos.goPCR"
+    platformBuildVersionCode="15"
+    platformBuildVersionName="4.0.4-1406430">
+
+    <application
+        android:label="GoPCR"
+        android:debuggable="true">
+
+        <activity
+            android:label="GoPCR"
+            android:name="org.golang.app.GoNativeActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:configChanges="0xa0">
+
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="goPCR" />
+
+            <intent-filter>
+
+                <action
+                    android:name="android.intent.action.MAIN" />
+
+                <category
+                    android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE" />
+</manifest>
